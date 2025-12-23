@@ -5,173 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Cartoon Galaxy</title>
 
-<!-- FUENTES -->
+<!-- GOOGLE FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=VT323&display=swap" rel="stylesheet">
 
-<style>
-/* ================= VARIABLES ================= */
-:root{
-  --bg-dark:#0b0e1a;
-  --bg-light:#f4f4f4;
-  --card-dark:#1b1f3b;
-  --card-light:#ffffff;
-  --text-dark:#ffffff;
-  --text-light:#111;
-  --accent:#00ffea;
-  --accent2:#ff2fd6;
-}
-
-/* ================= BODY ================= */
-body{
-  margin:0;
-  background:var(--bg-dark);
-  font-family:'VT323', monospace;
-}
-body.light{ background:var(--bg-light); }
-
-/* ================= INTRO ================= */
-@keyframes zoomIn{
-  from{transform:scale(3);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-@keyframes glitch{
-  0%{transform:translate(0)}
-  20%{transform:translate(-2px,2px)}
-  40%{transform:translate(2px,-2px)}
-  60%{transform:translate(-1px,1px)}
-  80%{transform:translate(1px,-1px)}
-  100%{transform:translate(0)}
-}
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden}
-}
-
-.intro{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle,#1b1f3b,#000);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-.intro-logo{
-  font-family:'Bangers', cursive;
-  font-size:4rem;
-  color:var(--accent);
-  text-shadow:4px 4px 0 var(--accent2);
-  animation:zoomIn 1.5s ease-out, glitch .2s infinite;
-}
-.hide-intro{ animation:fadeOut 1s forwards; }
-
-/* ================= CONTENEDOR ================= */
-.cartoon-galaxy{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-  color:var(--text-dark);
-}
-body.light .cartoon-galaxy{ color:var(--text-light); }
-
-/* ================= HEADER ================= */
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.header h1{
-  font-family:'Bangers', cursive;
-  font-size:3rem;
-  color:var(--accent);
-  text-shadow:4px 4px 0 var(--accent2);
-}
-.toggle{
-  padding:10px 14px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  font-size:1.2rem;
-}
-
-/* ================= PLAYER ================= */
-.player{
-  background:var(--card-dark);
-  border-radius:20px;
-  padding:15px;
-  box-shadow:0 0 25px rgba(0,255,234,.35);
-}
-body.light .player{ background:var(--card-light); }
-
-.video{
-  position:relative;
-  padding-top:56.25%;
-  border-radius:15px;
-  overflow:hidden;
-}
-.video iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:none;
-}
-
-/* ================= CONTROLES ================= */
-.controls{
-  display:flex;
-  justify-content:space-between;
-  margin:15px 0;
-}
-.ctrl{
-  font-family:'Bangers', cursive;
-  font-size:1.5rem;
-  padding:10px 22px;
-  border-radius:15px;
-  border:none;
-  cursor:pointer;
-  background:var(--accent2);
-  color:#fff;
-  box-shadow:3px 3px 0 #000;
-}
-.ctrl:hover{ transform:scale(1.1); }
-
-/* ================= CANAL ================= */
-.channel-name{
-  text-align:center;
-  font-size:1.4rem;
-  color:var(--accent);
-}
-
-/* ================= BOTONES ================= */
-.channels{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:12px;
-  margin-top:20px;
-}
-.channel-btn{
-  background:var(--card-dark);
-  padding:12px;
-  border-radius:14px;
-  text-align:center;
-  cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,.4);
-}
-body.light .channel-btn{ background:var(--card-light); }
-.channel-btn:hover{
-  transform:scale(1.08) rotate(-1deg);
-}
-</style>
+<!-- STYLES -->
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- INTRO -->
 <div class="intro" id="intro">
   <div class="intro-logo">CARTOON<br>GALAXY</div>
 </div>
 
-<!-- APP -->
 <div class="cartoon-galaxy">
   <div class="header">
     <h1>Cartoon Galaxy</h1>
@@ -237,7 +83,6 @@ function toggleMode(){
 
 loadChannel();
 
-/* INTRO SOLO 1 VEZ */
 const intro = document.getElementById("intro");
 if(sessionStorage.getItem("introPlayed")){
   intro.style.display="none";
